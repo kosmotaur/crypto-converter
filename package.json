@@ -1,0 +1,31 @@
+{
+  "name": "crypto",
+  "version": "1.0.0",
+  "description": "Convert your cryptocurrency holdings to target currency",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node src/index.js",
+    "build-src": "babel src -s -q --out-dir dist",
+    "build-pkg": "pkg -t node8 dist/index.js",
+    "build": "run-s build-src build-pkg"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^3.1.0",
+    "jsome": "^2.3.26",
+    "pretty-error": "^2.1.1",
+    "ramda": "^0.25.0",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
+    "yargs": "^10.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "npm-run-all": "^4.1.2",
+    "pkg": "^4.2.6"
+  }
+}
