@@ -2,23 +2,28 @@
   "name": "crypto-converter",
   "version": "0.0.0-development",
   "description": "Convert your cryptocurrency holdings to target currency",
-  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "crypto-converter": "./dist/bin/cli.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node src/index.js",
+    "start": "babel-node src/bin/cli.js",
     "build-src": "babel src -s -q --out-dir dist",
     "build-pkg": "pkg -t node8 dist/index.js",
     "build": "run-s build-src build-pkg",
     "semantic-release": "semantic-release",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "lint:fix": "standard --fix",
+    "lint": "standard",
+    "prepublish": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "debug": "^3.1.0",
-    "jsome": "^2.3.26",
-    "pretty-error": "^2.1.1",
     "ramda": "^0.25.0",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
@@ -26,12 +31,14 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.1",
     "babel-preset-env": "^1.6.1",
-    "commitizen": "^2.9.6",
-    "cz-conventional-changelog": "^2.1.0",
     "npm-run-all": "^4.1.2",
     "pkg": "^4.2.6",
-    "semantic-release": "^12.4.1"
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
+    "semantic-release": "^12.4.1",
+    "standard": "^10.0.3"
   },
   "repository": {
     "type": "git",

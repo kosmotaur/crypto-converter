@@ -1,5 +1,3 @@
-import {resolve} from 'path'
-import PrettyError from 'pretty-error'
 import {
   assoc,
   compose,
@@ -17,27 +15,14 @@ import {
   values
 } from 'ramda'
 import request from 'request-promise-native'
-import yargs from 'yargs'
+import debug from 'debug'
+import getArgv from './argv'
 
-const d = require('debug')('crypto-convert')
-const pe = new PrettyError()
-const argv = yargs
-  .option('currency', {
-    alias: 'c',
-    default: 'gbp'
-  })
-  .argv
-const balancesPath = resolve(process.cwd(), argv._[0])
-const tsym = argv.currency.toUpperCase()
-let balances
-try {
-  d('Loading balances from %s', balancesPath)
-  balances = require(balancesPath)
-} catch (e) {
-  console.error(`Can't find balances file under ${balancesPath}`)
-  process.exit(1)
-}
-const main = () => {
+const d = debug('crypto-convert')
+
+const main = balances => {
+  const argv = getArgv()
+  const tsym = argv.currency.toUpperCase()
   const url = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${Object.keys(balances).join(',')}&tsyms=${tsym}`
 
   d('Querying CryptoCompare: %s', url)
@@ -59,12 +44,9 @@ const main = () => {
     )),
     map(compose(head, values)),
     JSON.parse,
-    tap((response) => d('CryptoCompare response: %s', response)),
+    tap(response => d('CryptoCompare response: %s', response)),
     request
   )(url)
 }
 
-main().then(compose(r => process.stdout.write(r), JSON.stringify), e => {
-  console.log(pe.render(e))
-  process.exit(1)
-})
+export default main
