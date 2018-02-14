@@ -2,9 +2,6 @@
   "name": "crypto-converter",
   "version": "0.0.0-development",
   "description": "Convert your cryptocurrency holdings to target currency",
-  "files": [
-    "dist"
-  ],
   "bin": {
     "crypto-converter": "./dist/bin/cli.js"
   },
@@ -17,7 +14,7 @@
     "commit": "git-cz",
     "lint:fix": "standard --fix",
     "lint": "standard",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build-src"
   },
   "keywords": [],
   "author": "",
