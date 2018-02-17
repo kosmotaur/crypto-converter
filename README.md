@@ -3,7 +3,7 @@ CLI to convert your cryptocurrency portfolio holdings to one single target curre
 
 ## Why?
 
-Most tools out there that try to help you with tracking cryptocurrencies' values are doing a bit too much. 
+Most tools out there that try to help you with tracking cryptocurrencies' values are doing a bit too much.
 Therefore I've built this CLI, to convert JSON with your holdings to a target currency, be it fiat or another crypto.
 Built on top of [CryptoCompare](http://cryptocompare.com)'s API.
 
@@ -28,15 +28,11 @@ Balances is expected to be a JSON file of a structure like:
 ```
 
 ### Options
-<table>
-    <tr>
-        <td><code>--currency</code>
-            <code>-c</code></td>
-        <td>
-            symbol of target currency to convert to, default: GBP
-        </td>
-    </tr>
-</table>
+```
+  --help          Show help                                            [boolean]
+  --version       Show version number                                  [boolean]
+  --currency, -c  Target currency to convert holdings to        [default: "gbp"]
+```
 
 ### Usage examples
 
