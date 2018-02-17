@@ -36,7 +36,7 @@ Balances is expected to be a JSON file of a structure like:
 
 ### Usage examples
 
-##### defaults
+#### defaults
 
 ```
 $ crypto-converter balances.json
@@ -44,16 +44,17 @@ $ crypto-converter balances.json
 {"0.0100 BTC":"71.08 GBP","0.9000 ETH":"603.50 GBP","12.0000 XRP":"9.45 GBP","total":"684.03 GBP"}
 ```
 
-##### with target currency
+#### with target currency
 ```
 $ crypto-converter -c EUR balances.json
 
 {"0.0100 BTC":"79.98 EUR","0.9000 ETH":"673.41 EUR","12.0000 XRP":"10.64 EUR","total":"764.03 EUR"}
 ```
 
-##### piping output for formatting
+#### piping output for formatting
 ```
 $ crypto-converter balances.json | python -mjson.tool
+
 {
     "0.0100 BTC": "71.36 GBP",
     "0.9000 ETH": "603.48 GBP",
@@ -62,7 +63,7 @@ $ crypto-converter balances.json | python -mjson.tool
 }
 ```
 
-##### using with [jq](https://stedolan.github.io/jq/) (incl. colours!)
+#### using with [jq](https://stedolan.github.io/jq/) (incl. colours!)
 ```
 $ crypto-converter balances.json | jq
 
