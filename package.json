@@ -18,6 +18,7 @@
   },
   "pre-commit": [
     "lint:fix",
+    "build-src",
     "documentation"
   ],
   "keywords": [],
