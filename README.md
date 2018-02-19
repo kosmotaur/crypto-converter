@@ -29,7 +29,10 @@ Balances is expected to be a JSON file of a structure like:
 
 ### Options
 ```
-
+Options:
+  --help          Show help                                            [boolean]
+  --version       Show version number                                  [boolean]
+  --currency, -c  Target currency to convert holdings to        [default: "gbp"]
 ```
 
 ### Usage examples
