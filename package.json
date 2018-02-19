@@ -10,12 +10,16 @@
     "build-src": "babel src -s -q --out-dir dist",
     "build-pkg": "pkg -t node8 dist/index.js",
     "build": "run-s build-src build-pkg",
-    "semantic-release": "semantic-release",
     "commit": "git-cz",
     "lint:fix": "standard --fix",
     "lint": "standard",
-    "prepublish": "npm run build-src"
+    "prepublish": "npm run build-src",
+    "documentation": "babel-node ./scripts/docs.js > README.md ; git add README.md"
   },
+  "pre-commit": [
+    "lint:fix",
+    "documentation"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -31,9 +35,11 @@
     "babel-preset-env": "^1.6.1",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.1.0",
+    "handlebars": "^4.0.11",
     "npm-run-all": "^4.1.2",
     "pkg": "^4.2.6",
-    "semantic-release": "^12.4.1",
+    "pre-commit": "^1.2.2",
+    "shelljs": "^0.8.1",
     "standard": "^10.0.3"
   },
   "repository": {

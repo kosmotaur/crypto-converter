@@ -29,10 +29,7 @@ Balances is expected to be a JSON file of a structure like:
 
 ### Options
 ```
-Options:
-  --help          Show help                                            [boolean]
-  --version       Show version number                                  [boolean]
-  --currency, -c                                                [default: "gbp"]undefined
+{{helpContent}}
 ```
 
 ### Usage examples
@@ -75,4 +72,3 @@ $ crypto-converter balances.json | jq
   "total": "683.98 GBP"
 }
 ```
-
