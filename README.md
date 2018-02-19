@@ -32,7 +32,7 @@ Balances is expected to be a JSON file of a structure like:
 Options:
   --help          Show help                                            [boolean]
   --version       Show version number                                  [boolean]
-  --currency, -c                                                [default: "gbp"]undefined
+  --currency, -c                                                [default: "gbp"]
 ```
 
 ### Usage examples
