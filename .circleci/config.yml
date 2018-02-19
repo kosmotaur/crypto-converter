@@ -13,4 +13,4 @@ jobs:
           command: npm install
       - run:
           name: release
-          command: npm run semantic-release || true
+          command: npx semantic-release || true
