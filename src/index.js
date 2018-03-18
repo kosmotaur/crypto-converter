@@ -1,21 +1,6 @@
-import {
-  assoc,
-  compose,
-  composeP,
-  converge,
-  head,
-  identity,
-  invoker,
-  map,
-  mapObjIndexed,
-  mergeAll,
-  objOf,
-  sum,
-  tap,
-  values
-} from 'ramda'
-import request from 'request-promise-native'
 import debug from 'debug'
+import {assoc, compose, composeP, converge, head, identity, invoker, map, mapObjIndexed, mergeAll, objOf, sum, tap, values} from 'ramda'
+import request from 'request-promise-native'
 import getArgv from './argv'
 
 const d = debug('crypto-convert')
