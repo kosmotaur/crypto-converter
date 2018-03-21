@@ -31,15 +31,19 @@
     "yargs": "^10.0.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "@babel/cli": "^7.0.0-beta.42",
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/node": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "ava": "^1.0.0-beta.3",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.1.0",
     "npm-run-all": "^4.1.2",
     "pkg": "^4.2.6",
     "pre-commit": "^1.2.2",
     "shelljs": "^0.8.1",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "testdouble": "^3.5.2"
   },
   "repository": {
     "type": "git",
