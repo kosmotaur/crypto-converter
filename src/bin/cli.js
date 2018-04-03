@@ -1,13 +1,15 @@
 #!/usr/bin/env node
-import {resolve} from 'path'
-import {compose} from 'ramda'
+
 import debug from 'debug'
-import main from '../.'
+import { resolve } from 'path'
+import { compose } from 'ramda'
+import main from '../'
 import getArgv from '../argv'
 
 const argv = getArgv()
 const d = debug('crypto-convert')
 const balancesPath = resolve(process.cwd(), argv._[0])
+const tsym = argv.currency.toUpperCase()
 let balances
 
 try {
@@ -18,7 +20,8 @@ try {
   process.exit(1)
 }
 
-main(balances).then(compose(r => process.stdout.write(r), JSON.stringify), e => {
-  console.log(e)
-  process.exit(1)
-})
+main(balances, tsym)
+  .then(compose(r => process.stdout.write(r), JSON.stringify), e => {
+    console.log(e)
+    process.exit(1)
+  })

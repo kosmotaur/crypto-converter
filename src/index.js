@@ -1,13 +1,10 @@
 import debug from 'debug'
 import {assoc, compose, composeP, converge, head, identity, invoker, map, mapObjIndexed, mergeAll, objOf, sum, tap, values} from 'ramda'
 import request from 'request-promise-native'
-import getArgv from './argv'
 
 const d = debug('crypto-convert')
 
-const main = balances => {
-  const argv = getArgv()
-  const tsym = argv.currency.toUpperCase()
+const main = (balances, tsym) => {
   const url = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${Object.keys(balances).join(',')}&tsyms=${tsym}`
 
   d('Querying CryptoCompare: %s', url)

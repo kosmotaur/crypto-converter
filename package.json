@@ -9,17 +9,30 @@
     "start": "babel-node src/bin/cli.js",
     "build-src": "babel src -s -q --out-dir dist",
     "build-pkg": "pkg -t node8 dist/index.js",
-    "build": "run-s build-src build-pkg",
+    "clean": "rm -rf dist",
+    "build": "run-p clean build-src",
     "commit": "git-cz",
     "lint:fix": "standard --fix",
     "lint": "standard",
-    "prepublish": "npm run build-src",
-    "documentation": "babel-node ./scripts/docs.js > README.md ; git add README.md"
+    "prepublish": "npm run build",
+    "documentation": "babel-node ./scripts/docs.js > README.md ; git add README.md",
+    "test": "ava"
   },
   "pre-commit": [
     "lint:fix",
     "documentation"
   ],
+  "ava": {
+    "require": [
+      "@babel/register",
+      "@babel/polyfill"
+    ],
+    "babel": {
+      "testOptions": {
+        "babelrc": false
+      }
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -28,18 +41,26 @@
     "ramda": "^0.25.0",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
+    "superstruct": "^0.5.1",
     "yargs": "^10.0.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "@babel/cli": "^7.0.0-beta.44",
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/polyfill": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "@babel/register": "^7.0.0-beta.44",
+    "ava": "^1.0.0-beta.3",
+    "chance": "^1.0.13",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.1.0",
     "npm-run-all": "^4.1.2",
     "pkg": "^4.2.6",
     "pre-commit": "^1.2.2",
     "shelljs": "^0.8.1",
-    "standard": "^10.0.3"
+    "sinon": "^4.4.8",
+    "standard": "^10.0.3",
+    "testdouble": "^3.5.2"
   },
   "repository": {
     "type": "git",
