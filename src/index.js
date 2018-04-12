@@ -1,12 +1,15 @@
 import debug from 'debug'
 import {assoc, compose, composeP, converge, head, identity, invoker, map, mapObjIndexed, mergeAll, objOf, sum, tap, values} from 'ramda'
 import request from 'request-promise-native'
+import {struct} from 'superstruct'
 
 const d = debug('crypto-convert')
+const valuesStruct = struct(['number'])
 
 const main = (balances, tsym) => {
   const url = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${Object.keys(balances).join(',')}&tsyms=${tsym}`
 
+  valuesStruct(Object.values(balances))
   d('Querying CryptoCompare: %s', url)
 
   return composeP(

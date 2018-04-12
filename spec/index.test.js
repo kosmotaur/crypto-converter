@@ -25,12 +25,12 @@ test.todo('throws when no balances provided')
 test.todo('throws when no target currency provided')
 test.todo('throws when balances are not an object')
 test.todo('throws when incorrect holding symbol')
-test.todo('throws when incorrect holding value')
-test.todo('returns a promise of conversion')
+test.only('throws when incorrect holding value', t => t.throws(() => t.context.subject({[chance.word()]: chance.word()})))
+test('returns a promise of conversion', t => t.true(t.context.subject(t.context.balances, chance.word()) instanceof Promise))
 test('calls CryptoCompare.com API', async t => {
   const tsym = chance.word()
   const expectedURL = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${Object.keys(t.context.balances).join(',')}&tsyms=${tsym}`
-  await t.context.subject(t.context.balances, tsym)
 
-  t.is(t.context.request.args[0][0], expectedURL)
+  await t.context.subject(t.context.balances, tsym)
+  t.is(t.context.request.args[0][0], expectedURL, 'Calling CryptoCompare with incorrect URL')
 })
